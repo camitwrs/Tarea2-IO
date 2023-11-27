@@ -140,7 +140,8 @@ class AlgoritmoGenetico():
 
       iteracion += 1
     
-    optimo = print(self.obtener_optimo())
+    print(f"Distribucion: ")
+    print(self.mejores_soluciones[len(self.mejores_soluciones)-1])
     
    
       
