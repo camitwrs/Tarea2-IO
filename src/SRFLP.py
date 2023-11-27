@@ -1,4 +1,5 @@
 import os
+import random
 
 # SRFLP: Problema de ubicación de instalaciones con restricciones de tamaño.
 class SRFLP():
@@ -80,7 +81,7 @@ class SRFLP():
   
   # Devuelve el peso correspondiente de peso_instal.
   # Verifica si los índices i y j están dentro del rango válido, y si no, imprime un mensaje de error y termina el programa.
-  def obtener_pesos(self, i, j):
+  def obtener_peso(self, i, j):
     if i >= self.n or i < 0 or j >= self.n or j < 0:
         print(f"Error no existe el puesto {i} o {j} fuera de rango")
         exit(1)
@@ -93,19 +94,34 @@ class SRFLP():
         print(f"Error no existe el puesto {i} fuera de rango")
         exit(1)
     return self.tam_instal[i]
+  
+  # Crea una solucion random desde la instancia, no entrega soluciones duplicadas
+  def crear_solucion_inicial(self):
+    instalaciones = list(range(self.n))
+    solucion = []
 
-  # Calcula y devuelve la distancia total basándose en una solución (array) proporcionada
+    for i in range((self.n)):
+        nodo = random.randrange(len(instalaciones))
+        solucion.append(instalaciones.pop(nodo))
+    return solucion    
+
+  # FUNCION OBJETIVO
+  # Calcula y devuelve el esfuerzo requerido de una solución (array) proporcionado.
   # Indice de array comienza desde el 0
-  def obtener_distancia_total(self, sol):
-      total = 0.0
-      for i in range(self.n - 1):
-          p1 = sol[i]
-          distancia_media = 0.0
-          for j in range(i + 1, self.n):
-              p2 = sol[j]
-              total += self.tam_instal[p1] / 2 + distancia_media + self.tam_instal[p2] / 2
-              distancia_media += self.tam_instal[p2]
-      return total
+  def obtener_esfuerzo(self, sol):
+    distancia_total = 0.0
+    esfuerzo_total = 0.0
+    tam_sol = len(sol)
+    for i in range(tam_sol - 1):
+        p1 = sol[i] 
+        distancia_media = 0.0
+        for j in range(i + 1, tam_sol):
+            p2 = sol[j]
+            distancia_total = self.tam_instal[p1] / 2 + distancia_media + self.tam_instal[p2] / 2
+            distancia_media += self.tam_instal[p2]
+            esfuerzo_total += distancia_total * self.obtener_peso(i, j)
+    return esfuerzo_total
+  
 
 
   
