@@ -1,6 +1,8 @@
 import os
 import random
 
+# Autor Original: Leslie Perez
+
 # SRFLP: Problema de ubicación de instalaciones con restricciones de tamaño.
 class SRFLP():
   

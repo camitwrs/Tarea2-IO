@@ -1,6 +1,8 @@
 from src.SRFLP import SRFLP
 import random
 
+# Referencias: Pseudocodigo Aula - Leslie Perez
+
 class AlgoritmoGenetico():
   # Variables de constructor (no se utilizan todas)
   def __init__(self, instancia, seleccion_padres, tipo_cruzamiento, tipo_mutacion, estrategia, seleccion_poblacion, tam_poblacion, tam_descendencia, prob_mutacion):
