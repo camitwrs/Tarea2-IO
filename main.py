@@ -1,4 +1,6 @@
 # SRFLP con Algoritmo Genetico.
+# Integrantes: Camila Torres, Jan Houter.
+
 import statistics
 from prettytable import PrettyTable
 from src.SRFLP import SRFLP
