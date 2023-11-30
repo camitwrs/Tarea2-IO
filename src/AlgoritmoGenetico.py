@@ -111,7 +111,7 @@ class AlgoritmoGenetico():
       #descendencia.clear()
       
       # Bucle descendencia (Conmentarios analogos al Pseudocodigo)
-      while(len(descendencia) < self.tam_poblacion):
+      while(len(descendencia) < self.tam_descendencia):
         # seleccionar individuos(G,2)
         lista_padres = self.seleccionar_mejores(poblacion, 2)
         padre1 = lista_padres[0]
